@@ -1,5 +1,5 @@
 import requests
-from config import session_id
+from utils.config import session_id
 
 
 def read_input(file):
@@ -12,4 +12,4 @@ def pull_input_directly(year, day):
     session = {"session": session_id}
     r = requests.get(url, cookies=session, verify=False)
 
-    return str(r.content).split("\\n")
+    return str(r.content).strip("b'").split("\\n")
