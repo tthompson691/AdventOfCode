@@ -23,9 +23,7 @@ def part_2(rounds):
             
 
 if __name__ == "__main__":
-    rounds = pull_input_directly(2022, 2)[:-1]
-    winkeys = {"A": "Y", "B": "Z", "C": "X", "val": 6}
-    
+    rounds = pull_input_directly(2022, 2)[:-1]    
 
     part1_score = part_1(rounds)
     
