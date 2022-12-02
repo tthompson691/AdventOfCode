@@ -19,13 +19,9 @@ def part_1(rounds, winkeys, rps_scores):
             # loss
             score += rps_scores[me]
         
-        
     return score
 
 def part_2(rounds, winkeys, rps_scores):
-    # X = lose
-    # Y = draw
-    # Z = win
     all_outcomes = {
         "X": {"A": "Z", "B": "X", "C": "Y"},
         "Y": {"A": "X", "B": "Y", "C": "Z"},
@@ -55,8 +51,7 @@ if __name__ == "__main__":
     rounds = pull_input_directly(2022, 2)[:-1]
     winkeys = {"A": "Y", "B": "Z", "C": "X"}
     rps_scores = {"X": 1, "Y": 2, "Z": 3}
-    
-    ### PART 1 ###
+
     part1_score = part_1(rounds, winkeys, rps_scores)
     
     part2_score = part_2(rounds, winkeys, rps_scores)
