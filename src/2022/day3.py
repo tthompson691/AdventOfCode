@@ -8,6 +8,7 @@ def get_common_item(sack):
 
     return list(comp1.intersection(comp2))[0]
 
+
 if __name__ == "__main__":
     sacks = pull_input_directly(2022, 3)[:-1]
     triple_sacks = [sacks[i:i+3] for i in range(0, len(sacks), 3)]
