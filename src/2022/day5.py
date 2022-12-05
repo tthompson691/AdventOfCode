@@ -12,9 +12,8 @@ def part1(stacks, moves):
 
 def part2(stacks, moves):
     for move in moves:
-        crates = stacks[move[1]][-move[0]:]
+        stacks[move[2]] += stacks[move[1]][-move[0]:]
         stacks[move[1]] = stacks[move[1]][:-move[0]]
-        stacks[move[2]] += crates
     
     return "".join(stacks[i][-1] for i in stacks)
     
