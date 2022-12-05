@@ -7,9 +7,12 @@ def read_input(file):
         return f.read().split("\n")
 
 
-def pull_input_directly(year, day):
+def pull_input_directly(year, day, split_newlines=True):
     url = f"https://adventofcode.com/{year}/day/{day}/input"
     session = {"session": session_id}
     r = requests.get(url, cookies=session, verify=False)
 
-    return str(r.content).strip("b'").split("\\n")
+    if split_newlines:
+        return str(r.content).strip("b'").split("\\n")
+    
+    return str(r.content).strip("b'")
