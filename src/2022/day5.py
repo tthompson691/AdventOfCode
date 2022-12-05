@@ -1,12 +1,16 @@
 from utils.utils import pull_input_directly
 import re
 
+
+def generate_top_crate_string(stacks):
+    return "".join(stacks[i][-1] for i in stacks)
+
 def part1(stacks, moves):
     for move in moves:
         for _ in range(move[0]):
             stacks[move[2]].append(stacks[move[1]].pop())
             
-    return "".join(stacks[i][-1] for i in stacks)
+    return generate_top_crate_string(stacks)
 
 
 def part2(stacks, moves):
@@ -14,7 +18,7 @@ def part2(stacks, moves):
         stacks[move[2]] += stacks[move[1]][-move[0]:]
         stacks[move[1]] = stacks[move[1]][:-move[0]]
     
-    return "".join(stacks[i][-1] for i in stacks)
+    return generate_top_crate_string(stacks)
     
 
 
