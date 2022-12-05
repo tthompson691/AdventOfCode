@@ -21,10 +21,10 @@ def part2(stacks, moves):
 
 if __name__ == "__main__":
     inp = pull_input_directly(2022, 5, split_newlines=False)
-    
-    raw_stack = inp.split("\\n\\n")[0]
+
     moves = [list(map(int, [i for i in re.findall("\d+", j)])) for j in inp.split("\\n\\n")[1].split("\\n")][:-1]
     
+    # hard code the stacks like a real winner
     stacks = {
         1: ["C", "Z", "N", "B", "M", "W", "Q", "V"],
         2: ["H", "Z", "R", "W", "C", "B"],
