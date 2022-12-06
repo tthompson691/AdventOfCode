@@ -9,8 +9,5 @@ def decrypt(stream, step):
 if __name__ == "__main__":
     inp = pull_input_directly(2022, 6)[0]
     
-    part1 = decrypt(inp, step=4)
-    part2 = decrypt(inp, step=14)
-    
-    print(part1)
-    print(part2)
+    print(decrypt(inp, step=4))
+    print(decrypt(inp, step=14))
