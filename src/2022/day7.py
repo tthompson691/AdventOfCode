@@ -48,8 +48,6 @@ def part2(dir: Directory):
 
     return part2_helper(dir, available)
     
-    
-    
 
 if __name__ == "__main__":
     cmds = pull_input_directly(2022, 7)[1:-1]
@@ -60,7 +58,6 @@ if __name__ == "__main__":
         if "$ cd" in cmd and ".." not in cmd:
             switchdir = cmd.split(" ")[-1]          
             activedir = activedir.subdirs[switchdir]
-            
         elif cmd == "$ cd ..":
             activedir = activedir.parent
         elif "dir " in cmd:
