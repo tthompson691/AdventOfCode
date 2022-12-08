@@ -32,10 +32,8 @@ def part1(dir: Directory, totalsum=0):
     return totalsum
 
 def part2(dir: Directory):
-    disk_space = 70000000
-    need_space = 30000000
-    available = disk_space - dir.total_size
-    delete_size = need_space - available
+    available = 70000000 - dir.total_size
+    delete_size = 30000000 - available
     
     def part2_helper(curdir, current_winner):
         if curdir.total_size >= delete_size and curdir.total_size < current_winner:
