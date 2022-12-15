@@ -2,10 +2,10 @@ from utils.utils import pull_input_directly
 from numpy import prod
 
 class Monkey:
-    def __init__(self, starting_items, iftrue=None, iffalse=None, operation=None, divisor=None):
+    def __init__(self, starting_items, operation, divisor):
         self.items = starting_items
-        self.truemonkey = iftrue
-        self.falsemonkey = iffalse
+        self.truemonkey = None
+        self.falsemonkey = None
         self.operation = operation
         self.total_items_inspected = 0
         self.divisor = divisor
@@ -133,7 +133,7 @@ def reset_monkeys(test=False):
 
 def calculate_monkey_business(_monkeys, num_rounds, part_1_or_2):
     divisor = prod([m.divisor for m in _monkeys])
-    for i in range(num_rounds):
+    for _ in range(num_rounds):
         # if i in [1, 20, 1000]:
         #     print([f"{monkey.total_items_inspected} " for monkey in _monkeys])
         for monkey in _monkeys:
