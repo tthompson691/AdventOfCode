@@ -10,11 +10,11 @@ class Monkey:
         self.total_items_inspected = 0
         self.divisor = divisor
 
-    def check_items(self, div_by_three=True, divisor=None):
+    def check_items(self, part_1_or_2=1, divisor=None):
         self.total_items_inspected += len(self.items)
         for item in self.items:
             item = self.operation(item)
-            if div_by_three:
+            if part_1_or_2 == 1:
                 item //= 3
             else:
                 item %= divisor
@@ -131,13 +131,13 @@ def reset_monkeys(test=False):
         return [tm0, tm1, tm2, tm3]
 
 
-def calculate_monkey_business(_monkeys, num_rounds, divide_by_three):
+def calculate_monkey_business(_monkeys, num_rounds, part_1_or_2):
     divisor = prod([m.divisor for m in _monkeys])
     for i in range(num_rounds):
         # if i in [1, 20, 1000]:
         #     print([f"{monkey.total_items_inspected} " for monkey in _monkeys])
         for monkey in _monkeys:
-            monkey.check_items(div_by_three=divide_by_three, divisor=divisor)
+            monkey.check_items(part_1_or_2=part_1_or_2, divisor=divisor)
 
     _monkeys.sort(key=lambda x: x.total_items_inspected, reverse=True)
     return _monkeys[0].total_items_inspected * _monkeys[1].total_items_inspected
@@ -146,11 +146,11 @@ def calculate_monkey_business(_monkeys, num_rounds, divide_by_three):
 if __name__ == "__main__":
     monkeys = reset_monkeys(test=True)
 
-    print(calculate_monkey_business(_monkeys=monkeys, num_rounds=20, divide_by_three=True))
+    print(calculate_monkey_business(_monkeys=monkeys, num_rounds=20, part_1_or_2=1))
 
     monkeys = reset_monkeys(test=True)
 
-    print(calculate_monkey_business(_monkeys=monkeys, num_rounds=10000, divide_by_three=False))
+    print(calculate_monkey_business(_monkeys=monkeys, num_rounds=10000, part_1_or_2=2))
 
 
 
