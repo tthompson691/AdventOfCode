@@ -107,7 +107,6 @@ if __name__ == "__main__":
                     elif diffy > 0:
                         knots[j][0] += 1
 
-
             for z, k in enumerate(knots):
                 dfgrid.iloc[k[0], k[1]] = z
 
