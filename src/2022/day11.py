@@ -20,122 +20,84 @@ class Monkey:
                 item %= divisor
 
             if item % self.divisor == 0:
-                self.truemonkey.items.append(item)
+                self.truemonkey.items.append(int(item))
             else:
-                self.falsemonkey.items.append(item)
+                self.falsemonkey.items.append(int(item))
 
         self.items = []
 
 
-def reset_monkeys(test=False):
-    if not test:
-        m0 = Monkey(
-            starting_items=[62, 92, 50, 63, 62, 93, 73, 50],
-            operation=lambda x: x * 7,
-            divisor=2
-        )
-        m1 = Monkey(
-            starting_items=[51, 97, 74, 84, 99],
-            operation=lambda x: x + 3,
-            divisor=7
-        )
-        m2 = Monkey(
-            starting_items=[98, 86, 62, 76, 51, 81, 95],
-            operation=lambda x: x + 4,
-            divisor=13
-        )
-        m3 = Monkey(
-            starting_items=[53, 95, 50, 85, 83, 72],
-            operation=lambda x: x + 5,
-            divisor=19
-        )
-        m4 = Monkey(
-            starting_items=[59, 60, 63, 71],
-            operation=lambda x: x * 5,
-            divisor=11
-        )
-        m5 = Monkey(
-            starting_items=[92, 65],
-            operation=lambda x: x ** 2,
-            divisor=5
-        )
-        m6 = Monkey(
-            starting_items=[78],
-            operation=lambda x: x + 8,
-            divisor=3
-        )
-        m7 = Monkey(
-            starting_items=[84, 93, 54],
-            operation=lambda x: x + 1,
-            divisor=17
-        )
-        m0.truemonkey = m7
-        m0.falsemonkey = m1
+def reset_monkeys():
+    m0 = Monkey(
+        starting_items=[62, 92, 50, 63, 62, 93, 73, 50],
+        operation=lambda x: x * 7,
+        divisor=2
+    )
+    m1 = Monkey(
+        starting_items=[51, 97, 74, 84, 99],
+        operation=lambda x: x + 3,
+        divisor=7
+    )
+    m2 = Monkey(
+        starting_items=[98, 86, 62, 76, 51, 81, 95],
+        operation=lambda x: x + 4,
+        divisor=13
+    )
+    m3 = Monkey(
+        starting_items=[53, 95, 50, 85, 83, 72],
+        operation=lambda x: x + 5,
+        divisor=19
+    )
+    m4 = Monkey(
+        starting_items=[59, 60, 63, 71],
+        operation=lambda x: x * 5,
+        divisor=11
+    )
+    m5 = Monkey(
+        starting_items=[92, 65],
+        operation=lambda x: x ** 2,
+        divisor=5
+    )
+    m6 = Monkey(
+        starting_items=[78],
+        operation=lambda x: x + 8,
+        divisor=3
+    )
+    m7 = Monkey(
+        starting_items=[84, 93, 54],
+        operation=lambda x: x + 1,
+        divisor=17
+    )
+    m0.truemonkey = m7
+    m0.falsemonkey = m1
 
-        m1.truemonkey = m2
-        m1.falsemonkey = m4
+    m1.truemonkey = m2
+    m1.falsemonkey = m4
 
-        m2.truemonkey = m5
-        m2.falsemonkey = m4
+    m2.truemonkey = m5
+    m2.falsemonkey = m4
 
-        m3.truemonkey = m6
-        m3.falsemonkey = m0
+    m3.truemonkey = m6
+    m3.falsemonkey = m0
 
-        m4.truemonkey = m5
-        m4.falsemonkey = m3
+    m4.truemonkey = m5
+    m4.falsemonkey = m3
 
-        m5.truemonkey = m6
-        m5.falsemonkey = m3
+    m5.truemonkey = m6
+    m5.falsemonkey = m3
 
-        m6.truemonkey = m0
-        m6.falsemonkey = m7
+    m6.truemonkey = m0
+    m6.falsemonkey = m7
 
-        m7.truemonkey = m2
-        m7.falsemonkey = m1
+    m7.truemonkey = m2
+    m7.falsemonkey = m1
 
-        return [m0, m1, m2, m3, m4, m5, m6, m7]
-    else:
-        # test monkeys from the example######################################
-        tm0 = Monkey(
-            starting_items=[79, 98],
-            operation=lambda x: x * 19,
-            divisor=23
-        )
-        tm1 = Monkey(
-            starting_items=[54, 65, 75, 74],
-            operation=lambda x: x + 6,
-            divisor=19
-        )
-        tm2 = Monkey(
-            starting_items=[79, 60, 97],
-            operation=lambda x: x ** 2,
-            divisor=13
-        )
-        tm3 = Monkey(
-            starting_items=[74],
-            operation=lambda x: x + 3,
-            divisor=17
-        )
-        tm0.truemonkey = tm2
-        tm0.falsemonkey = tm3
-
-        tm1.truemonkey = tm2
-        tm1.falsemonkey = tm0
-
-        tm2.truemonkey = tm1
-        tm2.falsemonkey = tm3
-
-        tm3.truemonkey = tm0
-        tm3.falsemonkey = tm1
-
-        return [tm0, tm1, tm2, tm3]
+    return [m0, m1, m2, m3, m4, m5, m6, m7]
 
 
 def calculate_monkey_business(_monkeys, num_rounds, part_1_or_2):
     divisor = prod([m.divisor for m in _monkeys])
     for _ in range(num_rounds):
-        # if i in [1, 20, 1000]:
-        #     print([f"{monkey.total_items_inspected} " for monkey in _monkeys])
         for monkey in _monkeys:
             monkey.check_items(part_1_or_2=part_1_or_2, divisor=divisor)
 
@@ -144,11 +106,11 @@ def calculate_monkey_business(_monkeys, num_rounds, part_1_or_2):
 
 
 if __name__ == "__main__":
-    monkeys = reset_monkeys(test=True)
+    monkeys = reset_monkeys()
 
     print(calculate_monkey_business(_monkeys=monkeys, num_rounds=20, part_1_or_2=1))
 
-    monkeys = reset_monkeys(test=True)
+    monkeys = reset_monkeys()
 
     print(calculate_monkey_business(_monkeys=monkeys, num_rounds=10000, part_1_or_2=2))
 
