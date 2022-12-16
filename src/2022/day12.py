@@ -37,8 +37,6 @@ if __name__ == "__main__":
         neighbor_coords = [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
         for znode in G.nodes:
             if (znode[0], znode[1]) in neighbor_coords and znode[2] <= val + 1:
-                if node[0] == 21 and node[1] == 20:
-                    print("d")
                 G.add_edge(node, znode)
 
     part1_path = nx.astar_path(G, source=start, target=end, heuristic=dist)
