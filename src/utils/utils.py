@@ -7,12 +7,12 @@ def read_input(file):
         return f.read().split("\n")
 
 
-def pull_input_directly(year, day, split_newlines=True):
+def pull_input_directly(year, day, delimiter="\\n"):
     url = f"https://adventofcode.com/{year}/day/{day}/input"
     session = {"session": session_id}
     r = requests.get(url, cookies=session, verify=False)
 
-    if split_newlines:
-        return str(r.content).strip("b'").split("\\n")
+    if delimiter is not None:
+        return str(r.content).strip("b'").split(delimiter)
     
     return str(r.content).strip("b'")

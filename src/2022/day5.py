@@ -23,7 +23,7 @@ def part2(stacks, moves):
 
 
 if __name__ == "__main__":
-    inp = pull_input_directly(2022, 5, split_newlines=False)
+    inp = pull_input_directly(2022, 5, delimiter=None)
 
     moves = [list(map(int, [i for i in re.findall("\d+", j)])) for j in inp.split("\\n\\n")[1].split("\\n")][:-1]
     
