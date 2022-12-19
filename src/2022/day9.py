@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 
 
-
 if __name__ == "__main__":
     moves = pull_input_directly(2022, 9)[:-1]
 

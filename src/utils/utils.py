@@ -2,9 +2,9 @@ import requests
 from utils.config import session_id
 
 
-def read_input(file):
+def read_input(file, delimiter="\\n"):
     with open(file, "r") as f:
-        return f.read().split("\n")
+        return f.read().split(delimiter)
 
 
 def pull_input_directly(year, day, delimiter="\\n"):
