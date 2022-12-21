@@ -1,5 +1,4 @@
 from utils.utils import pull_input_directly, read_input
-import re
 
 def compare(pp_l, pp_r):
     if type(pp_l) == list and type(pp_r) == int:
