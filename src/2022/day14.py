@@ -22,22 +22,22 @@ def fill_cave(cave):
         sand_c = 500
         try:
             while True:
+                # try vertical drop
                 if cave[sand_r + 1, sand_c] == 0:
-                    # vertical drop
                     sand_r += 1
+                # try left drop
+                elif cave[sand_r + 1, sand_c - 1] == 0:
+                    sand_r += 1
+                    sand_c -= 1
+                # try right drop
+                elif cave[sand_r + 1, sand_c + 1] == 0:
+                    sand_r += 1
+                    sand_c += 1
                 else:
-                    # try left drop
-                    if cave[sand_r + 1, sand_c - 1] == 0:
-                        sand_r += 1
-                        sand_c -= 1
-                    # try right drop
-                    elif cave[sand_r + 1, sand_c + 1] == 0:
-                        sand_r += 1
-                        sand_c += 1
-                    else:
-                        cave[sand_r, sand_c] = 5
-                        sand += 1
-                        break
+                    # sand rests
+                    cave[sand_r, sand_c] = 5
+                    sand += 1
+                    break
 
         except IndexError:
             # part 1 condition - we have reached the void
