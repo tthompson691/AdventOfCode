@@ -1,8 +1,11 @@
-import numpy as np
-import re
-from utils.utils import pull_input_directly
 import random
+import re
 from string import ascii_letters
+
+import numpy as np
+
+from utils.utils import pull_input_directly
+
 
 def get_neighbors(_array, indices):
     neighbors = []
@@ -13,9 +16,10 @@ def get_neighbors(_array, indices):
         for dx in range(-1, 2):
             for dy in range(-1, 2):
                 if x + dx in x_range and y + dy in y_range:
-                    neighbors.append((x+dx, y+dy))
+                    neighbors.append((x + dx, y + dy))
 
     return list(set(neighbors).difference(set(indices)))
+
 
 def generate_random_letters():
     return "".join(random.choices(ascii_letters, k=10))
@@ -50,10 +54,15 @@ if __name__ == "__main__":
     p2_sum = 0
     for star_index in star_indices:
         star_neighbors = get_neighbors(engine, [star_index])
-        abc = [num for num in num_dict if len(set(star_neighbors).intersection(set(num_dict[num]))) != 0]
-        if len(abc) == 2:
-            p2_sum += int(re.findall("[0-9]+", abc[0])[0]) * int(re.findall("[0-9]+", abc[1])[0])
+        adjacent_nums = [
+            num
+            for num in num_dict
+            if len(set(star_neighbors).intersection(set(num_dict[num]))) != 0
+        ]
+        if len(adjacent_nums) == 2:
+            p2_sum += int(re.findall("[0-9]+", adjacent_nums[0])[0]) * int(
+                re.findall("[0-9]+", adjacent_nums[1])[0]
+            )
 
     print(f"PART 1: {sum(ans)}")
     print(f"PART 2: {p2_sum}")
-
