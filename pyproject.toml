@@ -1,0 +1,39 @@
+[project]
+name = "adventofcode"
+dynamic = ["version"]
+
+dependencies = [
+  "requests",
+  "pandas",
+]
+
+[project.optional-dependencies]
+ci = [
+  "ruff==0.1.3",
+]
+
+dev = [
+  "pre-commit",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+ignore = ["ISC001"]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I",
+    # pyupgrade
+    "UP",
+    # flake8-implicit-str-concat
+    "ISC",
+    # flake8-simplify
+    "SIM",
+    # eradicate
+    "ERA",
+]
