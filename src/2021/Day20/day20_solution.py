@@ -1,5 +1,6 @@
-from utils import pull_input_directly
 import numpy as np
+
+from utils import pull_input_directly
 
 
 def determine_pixel(_slice, _on_border):

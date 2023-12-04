@@ -1,12 +1,15 @@
-from utils.utils import pull_input_directly, read_input
-import matplotlib.pyplot as plt
-from matplotlib import colors
-import numpy as np
 import copy
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib import colors
+
+from utils.utils import pull_input_directly
+
 
 def show_cave_plot(cave):
     global cmap, norm, ax
-    cmap = colors.ListedColormap(['white', 'orange', 'blue'])
+    cmap = colors.ListedColormap(["white", "orange", "blue"])
     bounds = [0, 3, 7, 9]
     norm = colors.BoundaryNorm(bounds, cmap.N)
     fig, ax = plt.subplots()
@@ -67,10 +70,10 @@ if __name__ == "__main__":
 
             if c1 != c2:
                 c1, c2 = sorted([c1, c2])
-                p1_cave[r1, c1:c2+1] = 9
+                p1_cave[r1, c1 : c2 + 1] = 9
             elif r1 != r2:
                 r1, r2 = sorted([r1, r2])
-                p1_cave[r1:r2+1, c1] = 9
+                p1_cave[r1 : r2 + 1, c1] = 9
 
     p2_cave = copy.deepcopy(p1_cave)
     floor = np.zeros([2, p2_cave.shape[1]])
@@ -79,8 +82,3 @@ if __name__ == "__main__":
 
     fill_cave(p1_cave)
     fill_cave(p2_cave)
-
-
-
-
-

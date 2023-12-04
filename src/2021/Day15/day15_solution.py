@@ -1,6 +1,7 @@
-from utils import read_input
-import numpy as np
 import networkx as nx
+import numpy as np
+
+from utils import read_input
 
 
 def get_neighbors(pos):
@@ -31,20 +32,15 @@ def risk(a, b):
 if __name__ == "__main__":
     cavern_list = [list(map(int, i)) for i in read_input("day15_input.txt")]
     cavern = np.array(cavern_list)
-
-    # other_caverns = [np.where(((cavern + i) % 10) == 0, 1, (cavern + i) % 10) for i in range(1, 5)]
     other_caverns = {0: cavern}
     for i in range(1, 9):
         other_caverns[i] = np.where(
             ((other_caverns[i - 1] + 1) % 10) == 0, 1, (other_caverns[i - 1] + 1) % 10
         )
 
-    # construct horizontal cavern sections first
     fat_rows = []
     for i in range(0, 5):
-        fat_rows.append(
-            np.concatenate([other_caverns[j] for j in range(i, i + 5)], axis=1)
-        )
+        fat_rows.append(np.concatenate([other_caverns[j] for j in range(i, i + 5)], axis=1))
 
     big_cavern = np.concatenate(fat_rows)
 

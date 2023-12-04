@@ -1,5 +1,6 @@
-from utils import read_input
 import numpy as np
+
+from utils import read_input
 
 
 def fold(paper, axis, val):
@@ -24,9 +25,7 @@ def fold(paper, axis, val):
 if __name__ == "__main__":
     inp = read_input("day13_input.txt")
     coords = [
-        (int(i.split(",")[1]), int(i.split(",")[0]))
-        for i in inp
-        if "fold" not in i and i != ""
+        (int(i.split(",")[1]), int(i.split(",")[0])) for i in inp if "fold" not in i and i != ""
     ]
     instructions = [
         (

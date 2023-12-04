@@ -1,6 +1,6 @@
-from utils.utils import pull_input_directly, read_input
 import numpy as np
 
+from utils.utils import pull_input_directly
 
 if __name__ == "__main__":
     inp = pull_input_directly(2022, 10)[:-1]
@@ -10,7 +10,7 @@ if __name__ == "__main__":
     screen = np.zeros([6, 40], dtype=np.int8)
     row = 0
     for i in inp:
-        spritepos = [x-1, x, x+1]
+        spritepos = [x - 1, x, x + 1]
         if "noop" in i:
             if cycles % 40 in spritepos:
                 screen[row, cycles % 40] = 1

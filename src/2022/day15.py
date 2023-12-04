@@ -1,10 +1,9 @@
-from utils.utils import pull_input_directly, read_input
-import numpy as np
 from re import findall
 
+from utils.utils import pull_input_directly
 
 if __name__ == "__main__":
-    coords = [tuple(map(int, findall("-*\d+", i))) for i in pull_input_directly(2022, 15)[:-1]]
+    coords = [tuple(map(int, findall(r"-*\d+", i))) for i in pull_input_directly(2022, 15)[:-1]]
 
     rows = {}
     for c in coords:
@@ -12,7 +11,7 @@ if __name__ == "__main__":
         dx = abs(bx - sx)
         dy = abs(by - sy)
         manhattan = dx + dy
-        counts_list = list(range(0, dy+1)) + list(range(dy, -1, -1))
+        counts_list = list(range(0, dy + 1)) + list(range(dy, -1, -1))
         for i, row in enumerate(range(sy - manhattan, sy + manhattan + 1)):
             try:
                 rows[row].append(range(sx - i, sx + i + 1))
@@ -20,4 +19,3 @@ if __name__ == "__main__":
                 rows[row] = [range(sx - i, sx + i + 1)]
 
     rows
-

@@ -1,7 +1,5 @@
-
-
 if __name__ == "__main__":
-    with open("day2_input.txt", "r") as f:
+    with open("day2_input.txt") as f:
         commands = f.read()
         commands = commands.split("\n")
 

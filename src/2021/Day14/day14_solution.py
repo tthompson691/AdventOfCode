@@ -1,5 +1,6 @@
-from utils import read_input
 import collections
+
+from utils import read_input
 
 
 def insert_the_things(running_str, _insertions, i=0):

@@ -13,7 +13,6 @@ def get_min_x(x=0):
 def get_valid_x_vel(min_x):
     x_vel = min_x
     valid_x_vel = []
-    start = 0
     while x_vel < x2:
         speeds = list(range(x_vel, -1, -1))
         x_pos = [0]

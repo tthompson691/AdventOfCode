@@ -1,18 +1,13 @@
-from utils.utils import pull_input_directly, read_input
 import numpy as np
 import pandas as pd
 
+from utils.utils import pull_input_directly
 
 if __name__ == "__main__":
     moves = pull_input_directly(2022, 9)[:-1]
 
     grid = np.zeros([500, 500], dtype=np.int8)
-    dfgrid = pd.DataFrame(
-        {
-            i: [None] * 500
-            for i in range(500)
-        }
-    )
+    dfgrid = pd.DataFrame({i: [None] * 500 for i in range(500)})
     headx = heady = 250
     tailx = taily = 250
 
@@ -52,24 +47,15 @@ if __name__ == "__main__":
                     tailx = headx - 1
                     taily = heady
 
-
-            # grid[headx, heady] = 0
-
             grid[tailx, taily] = 1
             dfgrid.iloc[tailx, taily] = "T"
             dfgrid.iloc[headx, heady] = "H"
 
-
     print(np.sum(grid))
-    
+
     ### PART 2 ###
     grid = np.zeros([500, 500], dtype=np.int8)
-    dfgrid = pd.DataFrame(
-        {
-            i: [None] * 500
-            for i in range(500)
-        }
-    )
+    dfgrid = pd.DataFrame({i: [None] * 500 for i in range(500)})
     knots = [[250, 250] for _ in range(10)]
 
     for i, move in enumerate(moves):
@@ -92,15 +78,15 @@ if __name__ == "__main__":
 
             # does tail need to move?
             for j in range(1, 10):
-                if abs(knots[j-1][0] - knots[j][0]) > 1 or abs(knots[j-1][1] - knots[j][1]) > 1:
-                    diffx = knots[j-1][1] - knots[j][1]
-                    diffy = knots[j-1][0] - knots[j][0]
-                    
+                if abs(knots[j - 1][0] - knots[j][0]) > 1 or abs(knots[j - 1][1] - knots[j][1]) > 1:
+                    diffx = knots[j - 1][1] - knots[j][1]
+                    diffy = knots[j - 1][0] - knots[j][0]
+
                     if diffx < 0:
                         knots[j][1] -= 1
                     elif diffx > 0:
                         knots[j][1] += 1
-                        
+
                     if diffy < 0:
                         knots[j][0] -= 1
                     elif diffy > 0:
@@ -111,7 +97,4 @@ if __name__ == "__main__":
 
             grid[knots[-1][0], knots[-1][1]] = 1
 
-
     print(np.sum(grid))
-
-

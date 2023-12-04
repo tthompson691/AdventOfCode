@@ -1,16 +1,13 @@
-from utils import read_input
 import numpy as np
+
+from utils import read_input
 
 
 def receive_energy(octos: np.array):
     octos = (octos + 1) % 10
-    new_flashers = {
-        (i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0
-    }
+    new_flashers = {(i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0}
     while len(new_flashers) != 0:
-        flashers = {
-            (i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0
-        }
+        flashers = {(i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0}
         for i, x in enumerate(octos):
             for j, y in enumerate(octos):
                 if octos[i, j] != 0:
@@ -94,9 +91,7 @@ def receive_energy(octos: np.array):
             (i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0
         } - flashers
 
-    num_flashers = len(
-        {(i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0}
-    )
+    num_flashers = len({(i, j) for i, x in enumerate(octos) for j, y in enumerate(x) if y == 0})
 
     return octos, num_flashers
 

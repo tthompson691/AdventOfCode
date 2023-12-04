@@ -54,30 +54,24 @@ class SingleDisplay:
         # 6 must be whichever input is len=6 and does not contain BOTH segs of the right vertical
         right_vertical = set(list(self.nums[1]))
         self.nums[6] = [
-            i
-            for i in self.inputs
-            if len(i) == 6 and not right_vertical.issubset(set(list(i)))
+            i for i in self.inputs if len(i) == 6 and not right_vertical.issubset(set(list(i)))
         ][0]
 
-        self.segs["z"] = list(
-            set(list(self.nums[6])).intersection(set(list(self.nums[1])))
-        )[0]
+        self.segs["z"] = list(set(list(self.nums[6])).intersection(set(list(self.nums[1]))))[0]
         self.segs["v"] = [i for i in list(right_vertical) if i != self.segs["z"]][0]
 
         self.nums[5] = [
             i
             for i in self.inputs
-            if len(i) == 5 and self.segs["z"] in i and not self.segs["v"] in i
+            if len(i) == 5 and self.segs["z"] in i and self.segs["v"] not in i
         ][0]
         self.nums[2] = [
             i
             for i in self.inputs
-            if len(i) == 5 and self.segs["v"] in i and not self.segs["z"] in i
+            if len(i) == 5 and self.segs["v"] in i and self.segs["z"] not in i
         ][0]
         self.nums[3] = [
-            i
-            for i in self.inputs
-            if len(i) == 5 and self.segs["v"] in i and self.segs["z"] in i
+            i for i in self.inputs if len(i) == 5 and self.segs["v"] in i and self.segs["z"] in i
         ][0]
 
         left_vertical = {"a", "b", "c", "d", "e", "f", "g"} - (set(list(self.nums[3])))
@@ -85,9 +79,7 @@ class SingleDisplay:
         self.nums[0] = [
             i
             for i in self.inputs
-            if len(i) == 6
-            and left_vertical.issubset(set(list(i)))
-            and i not in self.nums.values()
+            if len(i) == 6 and left_vertical.issubset(set(list(i))) and i not in self.nums.values()
         ][0]
         self.nums[9] = [i for i in self.inputs if i not in self.nums.values()][0]
 

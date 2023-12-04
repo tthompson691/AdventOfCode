@@ -1,5 +1,5 @@
-from utils.utils import pull_input_directly
 from numpy import prod
+
 
 class Monkey:
     def __init__(self, starting_items, operation, divisor):
@@ -29,45 +29,15 @@ class Monkey:
 
 def reset_monkeys():
     m0 = Monkey(
-        starting_items=[62, 92, 50, 63, 62, 93, 73, 50],
-        operation=lambda x: x * 7,
-        divisor=2
+        starting_items=[62, 92, 50, 63, 62, 93, 73, 50], operation=lambda x: x * 7, divisor=2
     )
-    m1 = Monkey(
-        starting_items=[51, 97, 74, 84, 99],
-        operation=lambda x: x + 3,
-        divisor=7
-    )
-    m2 = Monkey(
-        starting_items=[98, 86, 62, 76, 51, 81, 95],
-        operation=lambda x: x + 4,
-        divisor=13
-    )
-    m3 = Monkey(
-        starting_items=[53, 95, 50, 85, 83, 72],
-        operation=lambda x: x + 5,
-        divisor=19
-    )
-    m4 = Monkey(
-        starting_items=[59, 60, 63, 71],
-        operation=lambda x: x * 5,
-        divisor=11
-    )
-    m5 = Monkey(
-        starting_items=[92, 65],
-        operation=lambda x: x ** 2,
-        divisor=5
-    )
-    m6 = Monkey(
-        starting_items=[78],
-        operation=lambda x: x + 8,
-        divisor=3
-    )
-    m7 = Monkey(
-        starting_items=[84, 93, 54],
-        operation=lambda x: x + 1,
-        divisor=17
-    )
+    m1 = Monkey(starting_items=[51, 97, 74, 84, 99], operation=lambda x: x + 3, divisor=7)
+    m2 = Monkey(starting_items=[98, 86, 62, 76, 51, 81, 95], operation=lambda x: x + 4, divisor=13)
+    m3 = Monkey(starting_items=[53, 95, 50, 85, 83, 72], operation=lambda x: x + 5, divisor=19)
+    m4 = Monkey(starting_items=[59, 60, 63, 71], operation=lambda x: x * 5, divisor=11)
+    m5 = Monkey(starting_items=[92, 65], operation=lambda x: x**2, divisor=5)
+    m6 = Monkey(starting_items=[78], operation=lambda x: x + 8, divisor=3)
+    m7 = Monkey(starting_items=[84, 93, 54], operation=lambda x: x + 1, divisor=17)
     m0.truemonkey = m7
     m0.falsemonkey = m1
 
@@ -113,7 +83,3 @@ if __name__ == "__main__":
     monkeys = reset_monkeys()
 
     print(calculate_monkey_business(_monkeys=monkeys, num_rounds=10000, part_1_or_2=2))
-
-
-
-

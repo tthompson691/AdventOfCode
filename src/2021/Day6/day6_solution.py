@@ -47,11 +47,11 @@ if __name__ == "__main__":
 
     days = 256
     # PART 1
-    # for i in range(0, days):
-    #     print(f"DAY {i}")
-    #     fishes = age_and_spawn_the_fish(fishes)
-    #
-    # print(f"FINAL: {len(fishes)}")
+    for i in range(0, days):
+        print(f"DAY {i}")
+        fishes = age_and_spawn_the_fish(fishes)
+
+    print(f"FINAL: {len(fishes)}")
 
     # PART 2
     fishes_dict = {}

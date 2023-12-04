@@ -1,4 +1,3 @@
-import pandas as pd
 from utils import read_input
 
 
@@ -27,15 +26,8 @@ def determine_all_points(point1, point2):
         point_range = range(min(y1, y2), max(y1, y2) + 1)
         all_points = [(x1, y) for y in point_range]
     else:
-        if x1 > x2:
-            x_point_range = range(x1, x2 - 1, -1)
-        else:
-            x_point_range = range(x1, x2 + 1)
-
-        if y1 > y2:
-            y_point_range = range(y1, y2 - 1, -1)
-        else:
-            y_point_range = range(y1, y2 + 1)
+        x_point_range = range(x1, x2 - 1, -1) if x1 > x2 else range(x1, x2 + 1)
+        y_point_range = range(y1, y2 - 1, -1) if y1 > y2 else range(y1, y2 + 1)
 
         x_and_y = list(zip(x_point_range, y_point_range))
         all_points = [(x, y) for x, y in x_and_y]

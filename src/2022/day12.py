@@ -1,8 +1,7 @@
+import networkx as nx
 import networkx.exception
 
 from utils.utils import pull_input_directly
-import networkx as nx
-import numpy as np
 
 
 def dist(*args):
@@ -19,7 +18,8 @@ if __name__ == "__main__":
     start = (20, 0, 97)
     end = (20, 46, 122)
 
-    # convert weird resulting numbers for "S" and "E" to numbers better suited for this graph traversal
+    # convert weird resulting numbers for "S" and "E" to
+    # numbers better suited for this graph traversal
     heightmap[start[0]][start[1]] = ord("a")
     heightmap[end[0]][end[1]] = ord("z")
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         i = node[0]
         j = node[1]
         val = node[2]
-        neighbor_coords = [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
+        neighbor_coords = [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]
         for znode in G.nodes:
             if (znode[0], znode[1]) in neighbor_coords and znode[2] <= val + 1:
                 G.add_edge(node, znode)
@@ -53,5 +53,3 @@ if __name__ == "__main__":
                 continue
 
     print(min(all_paths))
-
-

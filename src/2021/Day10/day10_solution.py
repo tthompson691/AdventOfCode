@@ -1,5 +1,6 @@
-from utils import read_input
 from numpy import median
+
+from utils import read_input
 
 
 def calculate_autocomplete_score(chars):
@@ -22,7 +23,7 @@ if __name__ == "__main__":
         stack = []
         line_corrupted = False
         for char in line:
-            if char in pairs_dict.keys():
+            if char in pairs_dict:
                 stack.append(char)
             elif char in pairs_dict.values():
                 if char != pairs_dict[stack[-1]]:

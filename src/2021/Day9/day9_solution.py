@@ -1,5 +1,6 @@
-from utils import read_input
 import numpy as np
+
+from utils import read_input
 
 
 class Basin:
@@ -11,10 +12,13 @@ class Basin:
         self.all_contained_coords = [(i, j)]
 
     def expand_up(self, point_i, point_j):
-        if point_i > 0 and (point_i - 1, point_j) not in self.all_contained_coords:
-            if array[point_i - 1][point_j] != 9:
-                self.points.append(BasinPoint(point_i - 1, point_j))
-                self.all_contained_coords.append((point_i - 1, point_j))
+        if (
+            point_i > 0
+            and (point_i - 1, point_j) not in self.all_contained_coords
+            and array[point_i - 1][point_j] != 9
+        ):
+            self.points.append(BasinPoint(point_i - 1, point_j))
+            self.all_contained_coords.append((point_i - 1, point_j))
 
         return True
 
@@ -22,18 +26,21 @@ class Basin:
         if (
             point_i < array.shape[0] - 1
             and (point_i + 1, point_j) not in self.all_contained_coords
+            and array[point_i + 1][point_j] != 9
         ):
-            if array[point_i + 1][point_j] != 9:
-                self.points.append(BasinPoint(point_i + 1, point_j))
-                self.all_contained_coords.append((point_i + 1, point_j))
+            self.points.append(BasinPoint(point_i + 1, point_j))
+            self.all_contained_coords.append((point_i + 1, point_j))
 
         return True
 
     def expand_left(self, point_i, point_j):
-        if point_j > 0 and (point_i, point_j - 1) not in self.all_contained_coords:
-            if array[point_i][point_j - 1] != 9:
-                self.points.append(BasinPoint(point_i, point_j - 1))
-                self.all_contained_coords.append((point_i, point_j - 1))
+        if (
+            point_j > 0
+            and (point_i, point_j - 1) not in self.all_contained_coords
+            and array[point_i][point_j - 1] != 9
+        ):
+            self.points.append(BasinPoint(point_i, point_j - 1))
+            self.all_contained_coords.append((point_i, point_j - 1))
 
         return True
 
@@ -41,22 +48,16 @@ class Basin:
         if (
             point_j < array.shape[1] - 1
             and (point_i, point_j + 1) not in self.all_contained_coords
+            and array[point_i][point_j + 1] != 9
         ):
-            if array[point_i][point_j + 1] != 9:
-                self.points.append(BasinPoint(point_i, point_j + 1))
-                self.all_contained_coords.append((point_i, point_j + 1))
+            self.points.append(BasinPoint(point_i, point_j + 1))
+            self.all_contained_coords.append((point_i, point_j + 1))
 
         return True
 
     def do_all_the_expanding(self):
         while not all(point.has_expanded for point in self.points):
             for point in self.points:
-                if not point.has_expanded:
-                    ex_u = self.expand_up(point.i, point.j)
-                    ex_d = self.expand_down(point.i, point.j)
-                    ex_l = self.expand_left(point.i, point.j)
-                    ex_r = self.expand_right(point.i, point.j)
-
                 point.has_expanded = True
 
 
@@ -100,7 +101,6 @@ if __name__ == "__main__":
             if is_low_point:
                 risk_levels.append(1 + y)
                 all_basins.append(Basin(i, j))
-                # print("debug")
 
     print(f"RISK SUM: {sum(risk_levels)}")
 

@@ -5,7 +5,6 @@ def iter_paths(current_cave, nests, prev_caves=[], endpoints=0):
     for k in current_cave:
         if k != "prev caves" and k != "end":
             current_cave["prev caves"] = prev_caves + [k]
-            # print(k)
             next_dict = {
                 i: None
                 for i in nests[k]
@@ -30,7 +29,7 @@ def iter_paths(current_cave, nests, prev_caves=[], endpoints=0):
 def check_if_double_cave(caves):
     caves = [i for i in caves if i.islower() and i != "start" and i != "end"]
     if caves:
-        return not len(caves) == len(set(caves))
+        return len(caves) != len(set(caves))
     else:
         return False
 
@@ -65,16 +64,11 @@ def iter_paths2(current_cave, nests, prev_caves=[], endpoints=0):
 
 
 if __name__ == "__main__":
-    cave_pairs = [
-        (i.split("-")[0], i.split("-")[1]) for i in read_input("day12_input.txt")
-    ]
+    cave_pairs = [(i.split("-")[0], i.split("-")[1]) for i in read_input("day12_input.txt")]
     unique_caves = {cave for cave_pair in cave_pairs for cave in cave_pair}
     nests = {
         cave: {
-            i
-            for cavey in cave_pairs
-            for i in cavey
-            if cave in cavey and i != cave and i != "start"
+            i for cavey in cave_pairs for i in cavey if cave in cavey and i != cave and i != "start"
         }
         for cave in unique_caves
     }

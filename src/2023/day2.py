@@ -1,14 +1,9 @@
 from utils.utils import pull_input_directly
 
-
 if __name__ == "__main__":
     bag = pull_input_directly(2023, 2)[:-1]
     colors = ["red", "green", "blue"]
-    limits = {
-        "red": 12,
-        "green": 13,
-        "blue": 14
-    }
+    limits = {"red": 12, "green": 13, "blue": 14}
     total_sum_p1 = 0
     total_sum_p2 = 0
     for game in bag:

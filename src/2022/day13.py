@@ -1,13 +1,14 @@
-from utils.utils import pull_input_directly, read_input
+from utils.utils import pull_input_directly
+
 
 def compare(pp_l, pp_r):
-    if type(pp_l) == list and type(pp_r) == int:
+    if isinstance(pp_l, list) and isinstance(pp_r, int):
         pp_r = [pp_r]
         return compare(pp_l, pp_r)
-    elif type(pp_l) == int and type(pp_r) == list:
+    elif isinstance(pp_l, int) and isinstance(pp_r, list):
         pp_l = [pp_l]
         return compare(pp_l, pp_r)
-    elif type(pp_l) == int and type(pp_r) == int:
+    elif isinstance(pp_l, int) and isinstance(pp_r, int):
         if pp_l > pp_r:
             return False
         elif pp_l < pp_r:

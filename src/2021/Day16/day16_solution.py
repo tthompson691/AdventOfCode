@@ -1,5 +1,6 @@
-from utils import read_input
 from numpy import prod
+
+from utils import read_input
 
 
 def calculate_values(type_id, values):
@@ -45,7 +46,6 @@ def parse_packet(packet, versions=0):
     version = int(packet[0:3], 2)
     versions += version
     type_id = int(packet[3:6], 2)
-    # print(f"packet:{packet}\n\tversion:{version}")
 
     if type_id == 4:
         i = 6

@@ -1,11 +1,9 @@
-from utils import read_input
 from display_class import SingleDisplay
 
+from utils import read_input
+
 if __name__ == "__main__":
-    ins = [
-        (i.split("|")[0].split(), i.split("|")[1].split())
-        for i in read_input("day8_input.txt")
-    ]
+    ins = [(i.split("|")[0].split(), i.split("|")[1].split()) for i in read_input("day8_input.txt")]
 
     unique_outputs = len([j for i in ins for j in i[1] if len(j) in (2, 3, 4, 7)])
 

@@ -1,6 +1,5 @@
 from utils import read_input
 
-
 if __name__ == "__main__":
     positions = read_input("day7_input.txt")[0].split(",")
     positions = [int(i) for i in positions]

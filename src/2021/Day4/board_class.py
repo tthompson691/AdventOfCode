@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 
 class BingoBoard:
@@ -27,9 +26,7 @@ class BingoBoard:
 
     def find_the_value(self, value):
         for col in list(self.board.columns):
-            self.board[col] = self.board[col].map(
-                lambda x: x + "X" if x == value else x
-            )
+            self.board[col] = self.board[col].map(lambda x: x + "X" if x == value else x)
 
     def check_bingo(self):
         bool_board = self.board.copy(deep=True)
@@ -49,20 +46,6 @@ class BingoBoard:
                 self.has_bingo = True
                 return True
 
-        # # check diagonal 1
-        # if list(set(np.diag(bool_board)))[0] and len(set(np.diag(bool_board))) == 1:
-        #     return True
-        #
-        # # check diagonal 2
-        # asdf = set(np.flipud(bool_board).diagonal())
-        # if list(asdf)[0] and len(asdf) == 1:
-        #     return True
-
         print("debug")
 
         return False
-
-    @staticmethod
-    def check_diagonals(board):
-        diag = np.diag(board)
-        # print("debug")
