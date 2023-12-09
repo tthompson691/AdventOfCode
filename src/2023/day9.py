@@ -11,9 +11,7 @@ def calc_derivatives(all_seqs):
 
 def get_last_numbers(all_seqs):
     all_seqs.reverse()
-    for i in range(len(all_seqs)):
-        if i == 0:
-            continue
+    for i in range(1, len(all_seqs)):
         all_seqs[i].append(all_seqs[i-1][-1] + all_seqs[i][-1])
         all_seqs[i] = [all_seqs[i][0] - all_seqs[i-1][0]] + all_seqs[i]
 
