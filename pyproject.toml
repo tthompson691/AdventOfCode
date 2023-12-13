@@ -19,7 +19,7 @@ dev = [
 [tool.ruff]
 line-length = 100
 src = ["src", "tests"]
-ignore = ["ISC001"]
+ignore = ["ISC001", "ERA001"]
 select = [
     # Pyflakes
     "F",
