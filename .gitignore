@@ -131,3 +131,5 @@ dmypy.json
 .vscode
 .idea/
 .ruff_cache/
+
+*.txt
