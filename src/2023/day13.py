@@ -5,7 +5,6 @@ from utils.utils import pull_input_directly
 
 def check_for_mirrors(pattern, smudges=0):
     mirror_found = False
-    val = 0
     # check rows
     for i in range(pattern.shape[0] - 1):
         num_rows = min(i + 1, pattern.shape[0] - i - 1)
@@ -48,8 +47,5 @@ if __name__ == "__main__":
     inp[-1] = inp[-1][:-1]
     patterns = [np.array([[*x] for x in y]) for y in inp]
 
-    p1_res = [check_for_mirrors(p) for p in patterns]
-    print(f"PART 1: {sum(p1_res)}")
-
-    p2 = sum([check_for_mirrors(p, smudges=1) for p in patterns])
-    print(f"PART 2: {p2}")
+    print(f"PART 1: {sum([check_for_mirrors(p) for p in patterns])}")
+    print(f"PART 2: {sum([check_for_mirrors(p, smudges=1) for p in patterns])}")
