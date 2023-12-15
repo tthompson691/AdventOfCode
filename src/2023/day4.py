@@ -1,6 +1,6 @@
 import re
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def determine_card_value(num_winners):

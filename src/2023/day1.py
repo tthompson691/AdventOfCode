@@ -1,6 +1,6 @@
 import re
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 if __name__ == "__main__":
     calibration = pull_input_directly(2023, 1)[:-1]

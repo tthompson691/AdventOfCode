@@ -2,7 +2,7 @@ from collections import Counter
 
 import numpy as np
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def rocknroll(rocks, dir="N"):

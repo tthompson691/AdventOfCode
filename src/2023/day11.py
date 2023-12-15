@@ -2,7 +2,7 @@ from itertools import permutations
 
 import numpy as np
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def get_distance(multiplier=1):

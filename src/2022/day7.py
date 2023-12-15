@@ -1,4 +1,4 @@
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 class Directory:

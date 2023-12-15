@@ -1,6 +1,6 @@
 import string
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def get_common_item(sack):

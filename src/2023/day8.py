@@ -1,6 +1,6 @@
 from math import lcm
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 if __name__ == "__main__":
     inp = pull_input_directly(2023, 8)[:-1]

@@ -1,4 +1,4 @@
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def compare(pp_l, pp_r):

@@ -1,4 +1,4 @@
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 def calc_derivatives(all_seqs):
     cur_seq = all_seqs[-1]

@@ -2,7 +2,7 @@ from collections import Counter
 
 import pandas as pd
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def score_single_hand(_hand, part=1):

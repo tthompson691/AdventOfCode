@@ -4,7 +4,7 @@ from string import ascii_letters
 
 import numpy as np
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def get_neighbors(_array, indices):

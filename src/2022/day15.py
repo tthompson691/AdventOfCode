@@ -1,6 +1,6 @@
 from re import findall
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 if __name__ == "__main__":
     coords = [tuple(map(int, findall(r"-*\d+", i))) for i in pull_input_directly(2022, 15)[:-1]]

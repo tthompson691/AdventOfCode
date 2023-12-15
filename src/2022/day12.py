@@ -1,7 +1,7 @@
 import networkx as nx
 import networkx.exception
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def dist(*args):

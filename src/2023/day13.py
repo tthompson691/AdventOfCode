@@ -1,6 +1,6 @@
 import numpy as np
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def check_for_mirrors(pattern, smudges=0):

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import colors
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 
 def show_cave_plot(cave):

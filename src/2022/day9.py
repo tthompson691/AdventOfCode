@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 if __name__ == "__main__":
     moves = pull_input_directly(2022, 9)[:-1]

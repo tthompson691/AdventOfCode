@@ -1,4 +1,4 @@
-from utils.utils import pull_input_directly
+from utils import pull_input_directly
 
 if __name__ == "__main__":
     bag = pull_input_directly(2023, 2)[:-1]
