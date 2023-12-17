@@ -1,5 +1,4 @@
 from utils import pull_input_directly
-from math import prod
 
 class Box:
     def __init__(self, num):
@@ -32,13 +31,6 @@ def hash_all(s):
 
     return cur_sum
 
-def find_matching_box(boxes: list[Box], lens_label):
-    for i, box in enumerate(boxes):
-        if lens_label in box.labels:
-            return i
-
-    return None
-
 if __name__ == "__main__":
     sequence = pull_input_directly(2023, 15, mode="real", delimiter=",")
     sequence[-1] = sequence[-1].removesuffix("\\n")
@@ -58,5 +50,4 @@ if __name__ == "__main__":
             matching_box = hash_all(lens_name)
             boxes[matching_box].remove_lens(lens_name)
 
-    # p2 = sum([b.calc_focusing_power() for b in boxes])
     print(f"PART 2: {sum([b.calc_focusing_power() for b in boxes])}")
