@@ -21,4 +21,4 @@ def pull_input_directly(year, day, mode="real", delimiter="\\n"):
     else:
         src_path = os.path.abspath(os.path.join(__file__, "..", ".."))
         with open(os.path.join(src_path, f"{year}/examples/day{day}samp.txt"), "r") as f:
-            return f.read()
+            return f.read().splitlines()
