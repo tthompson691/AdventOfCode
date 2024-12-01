@@ -90,12 +90,13 @@ if __name__ == "__main__":
             + [[[0, y, "d"]]for y in range(max_y+1)]
             + [[[max_x, y, "u"]] for y in range(max_y+1)]
     )
-    # res = Parallel(n_jobs=-1)(delayed(do_the_thing)(x) for x in tqdm(starting_beams))
-    res = []
-    for s in tqdm(starting_beams):
-        res.append(do_the_thing(s))
-
+    res = Parallel(n_jobs=-1)(delayed(do_the_thing)(x) for x in tqdm(starting_beams))
+    # res = []
+    # for s in tqdm(starting_beams):
+    #     res.append(do_the_thing(s))
     print(max(res))
+    with open("/Users/travisthompson/REPOS/AdventOfCode/src/2023/day16res.txt", "r") as f:
+        f.write(f"{max(res)}")
 
 
 
