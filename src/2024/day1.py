@@ -1,10 +1,11 @@
-from utils.utils import pull_input_directly, read_input
 from collections import Counter
+
+from utils.utils import pull_input_directly, read_input
 
 if __name__ == "__main__":
     mode = "real"
     if mode == "sample":
-        inp = read_input("/Users/travisthompson/REPOS/AdventOfCode/src/2024/day1samp.txt", delimiter="\n")
+        inp = read_input("/Users/travisthompson/REPOS/AdventOfCode/src/2024/day1samp.txt")
     else:
         inp = pull_input_directly(2024, 1)[:-1]
 
@@ -18,4 +19,3 @@ if __name__ == "__main__":
     r_list_counts = Counter(r_list)
     p2 = sum([v * r_list_counts[v] for v in l_list])
     print(f"PART 2: {p2}")
-

@@ -1,24 +1,24 @@
-import requests
-from utils.config import session_id
 import os
 
+import requests
 
-def read_input(file, delimiter="\\n"):
-    with open(file, "r") as f:
-        return f.read().split(delimiter)
+from utils.config import session_id
 
 
-def pull_input_directly(year, day, mode="real", delimiter="\\n"):
-    if mode == "real":
-        url = f"https://adventofcode.com/{year}/day/{day}/input"
-        session = {"session": session_id}
-        r = requests.get(url, cookies=session, verify=False)
+def read_input(year: int, day: int, delimiter="\n", source="real"):
+    sample_inputs_path = os.path.abspath(os.path.join(__file__, "..", "..", "sample_inputs"))
 
-        if delimiter is not None:
-            return str(r.content).strip("b'").split(delimiter)
+    if source == "sample":
+        with open(os.path.join(sample_inputs_path, f"{year}_{day}.txt")) as f:
+            return f.read().split("\n")
+    elif source == "real":
+        return pull_input_directly(year, day)
 
-        return str(r.content).strip("b'")
-    else:
-        src_path = os.path.abspath(os.path.join(__file__, "..", ".."))
-        with open(os.path.join(src_path, f"{year}/examples/day{day}samp.txt"), "r") as f:
-            return f.read().splitlines()
+
+def pull_input_directly(year, day):
+    url = f"https://adventofcode.com/{year}/day/{day}/input"
+    session = {"session": session_id}
+    r = requests.get(url, cookies=session, verify=False)
+    return str(r.content).strip("b'").split("\\n")[:-1]
+
+    # return str(r.content).strip("b'")[:-1]
