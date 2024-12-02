@@ -1,13 +1,9 @@
 from collections import Counter
 
-from utils.utils import pull_input_directly, read_input
+from utils.utils import read_input
 
 if __name__ == "__main__":
-    mode = "real"
-    if mode == "sample":
-        inp = read_input("/Users/travisthompson/REPOS/AdventOfCode/src/2024/day1samp.txt")
-    else:
-        inp = pull_input_directly(2024, 1)[:-1]
+    inp = read_input(2024, 1, source="real")
 
     inp = [tuple(map(int, x.split("   "))) for x in inp]
     l_list = [x[0] for x in inp]
