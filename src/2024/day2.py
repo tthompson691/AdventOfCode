@@ -35,5 +35,5 @@ if __name__ == "__main__":
     for report in reports:
         res.append(run_one_report(report))
 
-    print(f"PART 1: {len([r for r in res if r == 'p1'])}")
-    print(f"PART 2: {len([r for r in res if r in ['p1', 'p2']])}")
+    print(f"PART 1: {res.count('p1')}")
+    print(f"PART 2: {res.count('p1') + res.count('p2')}")
