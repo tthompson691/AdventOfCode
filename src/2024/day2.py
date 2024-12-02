@@ -28,7 +28,6 @@ def run_one_report(_report, retry=False, drop_index=0):
 
 if __name__ == "__main__":
     reports = [list(map(int, r.split(" "))) for r in read_input(2024, 2, source="real")]
-    p1_safe_reports = p2_safe_reports = 0
     # look. I'm well aware I could list comprehend this. Shush your mouth. But list comprehension
     # breaks the func's reference the global variable report. I'd say I'll fix it later but
     # I probably won't
