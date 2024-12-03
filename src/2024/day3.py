@@ -17,7 +17,6 @@ inp = "".join(read_input(2024, 3, source="real"))
 
 print(f"PART 1: {read_instruction_set(inp)}")
 
-conditionals = inp.split("do()")
-culled_conditionals = [c.split("don't()")[0] for c in conditionals]
+culled_conditionals = [c.split("don't()")[0] for c in inp.split("do()")]
 
 print(f"PART 2: {sum([read_instruction_set(cc) for cc in culled_conditionals])}")
