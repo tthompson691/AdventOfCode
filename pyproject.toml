@@ -7,6 +7,7 @@ dependencies = [
   "pandas",
   "pre-commit>=4.0.1",
   "ruff>=0.8.1",
+  "numpy>=2.1.3",
 ]
 
 [tool.ruff]
