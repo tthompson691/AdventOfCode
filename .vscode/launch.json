@@ -1,0 +1,29 @@
+{
+    "configurations": [
+      {
+        "type": "debugpy",
+        "request": "launch",
+        "name": "2024_2",
+        "program": "${workspaceFolder}/src/2024/day2.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        // "envFile": "${workspaceFolder}/.env"
+      },
+      {
+        "type": "debugpy",
+        "request": "launch",
+        "name": "2024_3",
+        "program": "${workspaceFolder}/src/2024/day3.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        // "envFile": "${workspaceFolder}/.env"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "programPath",
+        "description": "Path to the Python file to debug"
+      }
+    ]
+  }
