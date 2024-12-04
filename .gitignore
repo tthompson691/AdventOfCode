@@ -132,5 +132,4 @@ dmypy.json
 .idea/
 .ruff_cache/
 
-*.txt
 .pre-commit-config.yaml
