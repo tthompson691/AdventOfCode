@@ -4,13 +4,9 @@ from utils.utils import read_input
 
 
 def read_instruction_set(statement):
-    instructions = re.findall(r"mul\(\d+,\d+\)", statement)
-    total = 0
-    for instruction in instructions:
-        digits = re.findall(r"\d+", instruction)
-        total += int(digits[0]) * int(digits[1])
-
-    return total
+    return sum(
+        [int(l_num) * int(r_num) for l_num, r_num in re.findall(r"mul\((\d+),(\d+)\)", statement)]
+    )
 
 
 inp = "".join(read_input(2024, 3, source="real"))
