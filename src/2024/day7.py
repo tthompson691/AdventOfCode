@@ -2,23 +2,24 @@ from utils.utils import read_input
 from itertools import product
 
 
-def reverse_engineer(answer, operands):
+def reverse_engineer(answer, operands, res=0):
     if len(operands) == 0:
         if answer == 0:
-            return True
+            return res + 1
         else:
-            return False
+            return res
 
     if answer % operands[-1] == 0:
-        res = reverse_engineer(answer / operands[-1], operands[:-1])
+        res = reverse_engineer(answer / operands[-1], operands[:-1], res=res)
 
     if answer - operands[-1] >= 0:
-        res = reverse_engineer(answer - operands[-1], operands[:-1])
+        res = reverse_engineer(answer - operands[-1], operands[:-1], res=res)
 
     return res
 
 def part_2_forwards_engineer(answer, operands):
     operation_combos = product(["*", "+", "||"], repeat=len(operands) - 1)
+    valids = 0
     for op_combo in operation_combos:
         total = operands[0]
         for i, op in enumerate(op_combo):
@@ -35,10 +36,6 @@ def part_2_forwards_engineer(answer, operands):
     return False
 
 
-
-
-
-
 equations = read_input(2024, 7, source="sample")
 
 p1_ans = 0
@@ -47,7 +44,8 @@ for equation in equations:
     answer, operands = equation.split(": ")
     operands = list(map(int, operands.split(" ")))
     answer = int(answer)
-    if reverse_engineer(answer, operands):
+    res = reverse_engineer(answer, operands)
+    if res > 0:
         p1_ans += answer
 
     if part_2_forwards_engineer(answer, operands):
