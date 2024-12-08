@@ -2,19 +2,18 @@ from utils.utils import read_input
 from itertools import product
 
 
-def reverse_engineer(answer, operands, res=0):
-    running_total = answer
+def reverse_engineer(answer, operands):
     if len(operands) == 0:
-        if running_total == 0:
+        if answer == 0:
             return True
         else:
             return False
 
-    if running_total % operands[-1] == 0:
-        res = reverse_engineer(running_total / operands[-1], operands[:-1], res=res)
+    if answer % operands[-1] == 0:
+        res = reverse_engineer(answer / operands[-1], operands[:-1])
 
-    if running_total - operands[-1] >= 0:
-        res = reverse_engineer(running_total - operands[-1], operands[:-1], res=res)
+    if answer - operands[-1] >= 0:
+        res = reverse_engineer(answer - operands[-1], operands[:-1])
 
     return res
 
