@@ -34,9 +34,6 @@ def calculate_antinodes(ant1, ant2):
         multiplier += 1
 
 
-
-
-
 ant_map = np.array([list(r) for r in read_input(2024, 8, source="real")])
 ANTINODE_MAP = ant_map.copy()
 ant_names = [x for x in np.unique(ant_map) if x != "."]
