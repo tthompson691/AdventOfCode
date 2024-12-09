@@ -1,9 +1,9 @@
 from utils.utils import read_input
 
-disk_map = read_input(2024, 9, source="real")[0]
+disk_map = read_input(2024, 9, source="sample")[0]
 
 disk_str = ""
-raw_disk = []
+p1_raw_disk = []
 p2_raw_disk = []
 for pos in range(0, len(disk_map), 2):
     block_id = 0 if pos == 0 else int(pos / 2)
@@ -11,24 +11,23 @@ for pos in range(0, len(disk_map), 2):
     free_space = 0 if pos >= len(disk_map) - 1 else int(disk_map[pos + 1])
     p2_raw_disk.append({"id": block_id, "size": filesize})
     p2_raw_disk.append({"id": ".", "size": free_space})
-    [raw_disk.append(block_id) for _ in range(filesize)]
-    [raw_disk.append(".") for _ in range(free_space)]
+    [p1_raw_disk.append(block_id) for _ in range(filesize)]
+    [p1_raw_disk.append(".") for _ in range(free_space)]
 
 left = 0
-right = len(raw_disk) - 1
-disk = raw_disk.copy()
+right = len(p1_raw_disk) - 1
 # PART 1
 while left < right:
-    if disk[left] == ".":
-        disk[left] = disk[right]
-        disk[right] = "."
-        while disk[right] == ".":
+    if p1_raw_disk[left] == ".":
+        p1_raw_disk[left] = p1_raw_disk[right]
+        p1_raw_disk[right] = "."
+        while p1_raw_disk[right] == ".":
             right -= 1
 
     left += 1
 
-disk = [x for x in disk if x != "."]
-print(f"PART 1: {sum(i * v for i, v in enumerate(disk))}")
+p1_raw_disk = [x for x in p1_raw_disk if x != "."]
+print(f"PART 1: {sum(i * v for i, v in enumerate(p1_raw_disk))}")
 
 # PART 2
 while block_id >= 0:
