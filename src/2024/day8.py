@@ -1,6 +1,9 @@
-from utils.utils import read_input
-import numpy as np
 from itertools import permutations
+
+import numpy as np
+
+from utils.utils import read_input
+
 
 def calculate_antinodes(ant1, ant2):
     P2_ANTINODES.append(tuple(ant1))
@@ -35,7 +38,6 @@ def calculate_antinodes(ant1, ant2):
 
 
 ant_map = np.array([list(r) for r in read_input(2024, 8, source="real")])
-ANTINODE_MAP = ant_map.copy()
 ant_names = [x for x in np.unique(ant_map) if x != "."]
 
 ROWS = len(ant_map)
@@ -46,7 +48,7 @@ P2_ANTINODES = []
 p1_total = []
 
 for ant_name in ant_names:
-    ant_locs = np.argwhere(ant_map==ant_name)
+    ant_locs = np.argwhere(ant_map == ant_name)
     ant_pairs = list(permutations(ant_locs, 2))
     [calculate_antinodes(*ant_pair) for ant_pair in ant_pairs]
 
