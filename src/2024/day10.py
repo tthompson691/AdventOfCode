@@ -23,7 +23,7 @@ def find_next_steps(i, j, cur_val, part):
     return
 
 
-VOL_MAP = np.array([list(x) for x in read_input(2024, 10, source="sample")], dtype=int)
+VOL_MAP = np.array([list(x) for x in read_input(2024, 10, source="real")], dtype=int)
 MAP_ROWS = VOL_MAP.shape[0]
 MAP_COLS = VOL_MAP.shape[1]
 
