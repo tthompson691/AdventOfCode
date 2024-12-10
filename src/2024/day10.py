@@ -32,7 +32,6 @@ P1_SCORE = 0
 P2_SCORE = 0
 
 for trailhead in trailheads:
-    old_score = P1_SCORE
     PEAKS_FOUND = []
     for part in 1, 2:
         find_next_steps(*trailhead, cur_val=0, part=part)
