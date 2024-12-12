@@ -29,7 +29,6 @@ def expand(i, j):
     COMPLETED_LOCS.append((i, j))
     AREA += 1
     sub_perimeter = 4
-
     plant = FULL_GARDEN[i, j]
     for di in [-1, 1]:
         if (i + di, j) in COMPLETED_LOCS:
@@ -54,7 +53,6 @@ garden = np.array([list(line) for line in read_input(2024, 12, source="real")])
 # add a buffer around the entire garden perimeter so we don't have to worry about indexing errors
 FULL_GARDEN = np.zeros((garden.shape[0] + 2, garden.shape[1] + 2), dtype=str)
 FULL_GARDEN[1:-1, 1:-1] = garden
-ROWS, COLS = FULL_GARDEN.shape
 
 p1_price = p2_price = 0
 
