@@ -27,7 +27,6 @@ stones = list(map(int, read_input(2024, 11, source="real")[0].split(" ")))
 
 for PART in 1, 2:
     CACHE = {}
-    res = 0
     print(f"PART {PART}: {sum(blink(stone, 1) for stone in stones)}")
 
 # Works cited: discussion via slay the spire metaphors with MC
