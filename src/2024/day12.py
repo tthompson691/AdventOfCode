@@ -20,7 +20,8 @@ def check_corners(i, j):
                 len([x for x in sub_garden if FULL_GARDEN[*x] == plant]) == 2
                 and FULL_GARDEN[i + di, j + dj] == plant
             ):
-                # edge case where two different regions are cattycorner to each other
+                # edge case where two different regions of the same plant are
+                # cattycorner to each other
                 CORNERS.append(sub_garden)
 
 
