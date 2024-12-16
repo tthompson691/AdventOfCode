@@ -19,7 +19,6 @@ def reverse_engineer(answer, operands, res=0):
 
 def part_2_forwards_engineer(answer, operands):
     operation_combos = product(["*", "+", "||"], repeat=len(operands) - 1)
-    valids = 0
     for op_combo in operation_combos:
         total = operands[0]
         for i, op in enumerate(op_combo):
