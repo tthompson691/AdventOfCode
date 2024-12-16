@@ -89,6 +89,15 @@
         "console": "integratedTerminal",
         "cwd": "${workspaceFolder}",
         // "envFile": "${workspaceFolder}/.env"
+      },
+      {
+        "type": "debugpy",
+        "request": "launch",
+        "name": "2024_15",
+        "program": "${workspaceFolder}/src/2024/day15.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        // "envFile": "${workspaceFolder}/.env"
       }
     ],
     "inputs": [
