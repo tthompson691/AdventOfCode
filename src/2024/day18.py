@@ -11,6 +11,19 @@ def dist(a, b):
     return ((ax - bx) ** 2 + (ay - by) ** 2) ** 0.5
 
 
+def update_graph(i, j, G, weight):
+    if i + 1 < grid_size:
+        G[i, j][i + 1, j]["weight"] = weight
+    if j + 1 < grid_size:
+        G[i, j][i, j + 1]["weight"] = weight
+    if i - 1 >= 0:
+        G[i, j][i - 1, j]["weight"] = weight
+    if j - 1 >= 0:
+        G[i, j][i, j - 1]["weight"] = weight
+
+    return G
+
+
 source = "real"
 
 all_byte_falls = [tuple(map(int, x.split(","))) for x in read_input(2024, 18, source=source)]
@@ -30,14 +43,8 @@ for x, y in byte_falls:
 G = nx.grid_2d_graph(grid_size, grid_size, create_using=nx.DiGraph)
 
 for i, j in G.nodes:
-    if i + 1 < grid_size:
-        G[i, j][i + 1, j]["weight"] = grid[i + 1, j]
-    if j + 1 < grid_size:
-        G[i, j][i, j + 1]["weight"] = grid[i, j + 1]
-    if i - 1 >= 0:
-        G[i, j][i - 1, j]["weight"] = grid[i - 1, j]
-    if j - 1 >= 0:
-        G[i, j][i, j - 1]["weight"] = grid[i, j - 1]
+    weight = 1000 if (j, i) in byte_falls else 1
+    G = update_graph(i, j, G, weight)
 
 res = nx.astar_path(
     G, source=(0, 0), target=(grid_size - 1, grid_size - 1), heuristic=dist, cutoff=1000
@@ -51,16 +58,7 @@ elif source == "real":
     p2_byte_falls = all_byte_falls[1024:]
 
 for x, y in p2_byte_falls:
-    grid[y, x] = 1000
-    if y + 1 < grid_size:
-        G[y, x][y + 1, x]["weight"] = 1000
-    if x + 1 < grid_size:
-        G[y, x][y, x + 1]["weight"] = 1000
-    if y - 1 >= 0:
-        G[y, x][y - 1, x]["weight"] = 1000
-    if x - 1 >= 0:
-        G[y, x][y, x - 1]["weight"] = 1000
-
+    G = update_graph(y, x, G, 1000)
     try:
         res = nx.astar_path(
             G, source=(0, 0), target=(grid_size - 1, grid_size - 1), heuristic=dist, cutoff=1000

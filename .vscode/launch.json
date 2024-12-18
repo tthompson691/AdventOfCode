@@ -120,6 +120,15 @@
       {
         "type": "debugpy",
         "request": "launch",
+        "name": "2024_17",
+        "program": "${workspaceFolder}/src/2024/day17.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        // "envFile": "${workspaceFolder}/.env"
+      },
+      {
+        "type": "debugpy",
+        "request": "launch",
         "name": "2024_18",
         "program": "${workspaceFolder}/src/2024/day18.py",
         "console": "integratedTerminal",
