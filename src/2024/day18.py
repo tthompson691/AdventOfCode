@@ -1,5 +1,4 @@
 import networkx as nx
-import numpy as np
 from networkx import NetworkXNoPath
 
 from utils.utils import read_input
@@ -29,15 +28,11 @@ source = "real"
 all_byte_falls = [tuple(map(int, x.split(","))) for x in read_input(2024, 18, source=source)]
 
 grid_size = {"real": 71, "sample": 7}[source]
-grid = np.ones([grid_size, grid_size], dtype=int)
 
-if source == "sample":
-    byte_falls = all_byte_falls[:12]
-elif source == "real":
-    byte_falls = all_byte_falls[:1024]
-
-for x, y in byte_falls:
-    grid[y, x] = 1000
+byte_falls = {
+    "sample": all_byte_falls[:12],
+    "real": all_byte_falls[:1024],
+}[source]
 
 ### PART 1 ###
 G = nx.grid_2d_graph(grid_size, grid_size, create_using=nx.DiGraph)
@@ -52,10 +47,10 @@ res = nx.astar_path(
 print(f"PART 1: {len(res) - 1}")
 
 ### PART 2 ###
-if source == "sample":
-    p2_byte_falls = all_byte_falls[12:]
-elif source == "real":
-    p2_byte_falls = all_byte_falls[1024:]
+p2_byte_falls = {
+    "sample": all_byte_falls[12:],
+    "real": all_byte_falls[1024:],
+}[source]
 
 for x, y in p2_byte_falls:
     G = update_graph(y, x, G, 1000)
