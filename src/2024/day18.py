@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import networkx as nx
 import numpy as np
 from networkx import NetworkXNoPath
@@ -27,9 +25,8 @@ elif source == "real":
 
 for x, y in byte_falls:
     grid[y, x] = 1000
-### PART 1 ###
-start = datetime.now()
 
+### PART 1 ###
 G = nx.grid_2d_graph(grid_size, grid_size, create_using=nx.DiGraph)
 
 for i, j in G.nodes:
@@ -45,9 +42,6 @@ for i, j in G.nodes:
 res = nx.astar_path(
     G, source=(0, 0), target=(grid_size - 1, grid_size - 1), heuristic=dist, cutoff=1000
 )
-
-print(f"P1 runtime: {datetime.now() - start}")
-
 print(f"PART 1: {len(res) - 1}")
 
 ### PART 2 ###
