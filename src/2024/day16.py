@@ -17,9 +17,8 @@ def get_valid_neighbors(heading):
 maze = np.array([list(x) for x in read_input(2024, 16, source="real")])
 
 start = np.argwhere(maze == "S")[0]
-end = np.argwhere(maze == "E")[0]
 heading = (0, 1)
-nodes = deque([(start[0], start[1], heading, 0, [])])
+nodes = deque([(*start, heading, 0, [])])
 best_score = 0
 visited = {}
 while nodes:
