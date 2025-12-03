@@ -3,8 +3,8 @@
       {
         "type": "debugpy",
         "request": "launch",
-        "name": "2025_3",
-        "program": "${workspaceFolder}/src/2025/day3.py",
+        "name": "2025_2",
+        "program": "${workspaceFolder}/src/2025/day2.py",
         "console": "integratedTerminal",
         "cwd": "${workspaceFolder}",
         // "envFile": "${workspaceFolder}/.env"
