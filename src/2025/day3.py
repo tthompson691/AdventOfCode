@@ -9,7 +9,7 @@ def calc_one_row(row, num_batteries):
         batteries.append(max_battery)
         row = row[row.index(max_battery) + 1 :]
 
-    return int("".join([str(b) for b in batteries]))
+    return int("".join(batteries))
 
 
 def day3(input_data, part):
