@@ -20,8 +20,7 @@ def calc_one_row(row, num_batteries):
 def day3(input_data, part):
     res = 0
     num_batteries = {1: 2, 2: 12}[part]
-    for row in input_data:
-        res += calc_one_row(row, num_batteries)
+    res = sum(calc_one_row(row, num_batteries) for row in input_data)
 
     print(f"Part {part}: {res}")
 
