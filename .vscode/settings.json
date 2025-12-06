@@ -5,6 +5,9 @@
     "terminal.integrated.env.windows": {
         "PYTHONPATH": "${workspaceFolder}/src",
     },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
     "terminal.integrated.inheritEnv": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
