@@ -11,6 +11,8 @@ dependencies = [
   "joblib>=1.4.2",
   "cachetools>=5.5.0",
   "networkx>=3.4.2",
+  "shapely>=2.1.2",
+  "matplotlib>=3.10.7",
 ]
 
 [tool.ruff]
