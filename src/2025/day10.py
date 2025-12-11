@@ -47,34 +47,8 @@ def p2_press_one_button(button_pressed, current_state=None, num_presses=0):
 
 
 def part2(machines):
-    # doesn't scale :(
-    res = 0
-    for i, machine in enumerate(machines):
-        queue = deque([([0] * len(machine["joltage"]), 0)])  # (current_state, num_presses)
-        state_achieved = False
-        achieved_states = []
-        desired_state = machine["joltage"]
-        while not state_achieved:
-            state, past_presses = queue.popleft()
-            for button in machine["buttons"]:
-                new_state, num_presses = p2_press_one_button(
-                    button_pressed=button, current_state=state.copy(), num_presses=past_presses
-                )
-
-                if new_state in achieved_states or any(
-                    nv > jv for nv, jv in zip(new_state, machine["joltage"])
-                ):
-                    continue
-
-                achieved_states.append(new_state)
-                if new_state == desired_state:
-                    res += num_presses
-                    state_achieved = True
-                    print(f"Machine {i} done")
-                    break
-                queue.extend([(new_state.copy(), num_presses)])
-
-    print(f"Part 2: {res}")
+    # regular BFS doesn't scale :(
+    return
 
 
 if __name__ == "__main__":
