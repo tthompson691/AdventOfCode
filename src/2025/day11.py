@@ -8,7 +8,7 @@ def part1(devices):
     for device in [d[0] for d in devices]:
         G.add_node(device)
 
-    for source, destinations in devices:
+    for source, destinations in devices.items():
         for destination in destinations:
             G.add_edge(source, destination)
 
@@ -16,24 +16,26 @@ def part1(devices):
 
 
 def travel_to_next(
-    start,
+    current_node,
     end,
     devices,
     cache,
 ):
-    destinations = devices[start]
-    for destination in destinations:
-        if destination == "out" and end != "out":
-            return 0
-        if destination == end:
-            return 1
-        elif destination in cache:
-            return cache[destination]
+    if current_node == "out":
+        return 0
+    next_nodes = devices[current_node]
+    cache[current_node] = 0
+    for next_node in next_nodes:
+        if next_node == "out" and end != "out":
+            cache[current_node] = 0
+        if next_node == end:
+            cache[current_node] = 1
+        elif next_node in cache:
+            cache[current_node] += cache[next_node]
         else:
-            cache[destination] = 0
-            cache[destination] += travel_to_next(destination, end, devices, cache)
+            cache[current_node] += travel_to_next(next_node, end, devices, cache)
 
-    return cache
+    return cache[current_node]
 
 
 def part2(devices):
@@ -47,32 +49,21 @@ def part2(devices):
     4) going to try memoized recursion
     """
 
-    node_pairs = [("svr", "fft"), ("fft", "dac"), ("dac", "out")]
-
+    node_pairs = [
+        ("svr", "fft"),
+        ("fft", "dac"),
+        ("dac", "out")
+    ]
+    p2 = 1
     for start, end in node_pairs:
         res = travel_to_next(start, end, devices, {})
-        res
+        p2 *= res
 
-
-#         # if cur_node == end:
-#         #     return 1
-
-# def part2b(devices):
-#     start = "svr"
-#     # end = "fft"
-#     stuff = []
-#     stack = ["fft"]
-#     while stack:
-#         end = stack.pop()
-#         valid_sources = [d for d in devices if end in devices[d]]
-#         stack.extend([d for d in valid_sources if d != start])
-#         stuff.append(len(valid_sources))
-
-#     stuff
+    print(f"Part 2: {p2}")
 
 
 if __name__ == "__main__":
-    data = read_input(2025, 11, source="sample")
+    data = read_input(2025, 11, source="real")
     devices = {x: y.split(" ") for x, y in (line.split(": ") for line in data)}
-    # part1(devices)
+    part1(devices)
     part2(devices)
