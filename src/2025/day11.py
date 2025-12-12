@@ -31,6 +31,10 @@ def part1(devices):
         else:
             p2 *= len(paths)
 
+    # paths = list(nx.all_simple_paths(G, "svr", "out"))
+    # paths = [p for p in paths if "fft" in p and "dac" in p]
+    # p2 = len(paths)
+
     print(f"Part 1: {p2}")
     # print(f"Part 2: {len([p for p in all_paths if required_nodes.issubset(p)])}")
 
